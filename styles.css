@@ -30,6 +30,7 @@ main {
     margin: 1px;
     border: 2px solid rgb(48, 48, 48);
     flex-grow: 1; 
+    color: white;
 
 }
 

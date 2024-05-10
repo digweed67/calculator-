@@ -45,3 +45,29 @@ function operate (num1, op, num2){
   }
 } 
 
+let operands = document.querySelectorAll(".operand");
+
+operands.forEach(operand => operand.addEventListener("click", displayValue));
+
+let inputString = ""; 
+
+function displayValue(e) {
+  if (e.target && e.target.value) {
+      inputString += e.target.value;
+      document.querySelector(".display").textContent = inputString;
+      return inputString
+  } 
+}
+
+
+
+let operators = document.querySelectorAll (".operator"); 
+
+operators.forEach(operator => operator.addEventListener("click", saveOperator)); 
+
+function saveOperator (e) {
+  if (e.target && e.target.value) {
+    let selectedOperator = e.target.value;
+    console.log(selectedOperator); 
+  }   
+};

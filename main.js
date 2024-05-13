@@ -17,7 +17,7 @@ const multiply = function (a,b) {
 
 const divide = function (a,b) {
   if(b === 0) {
-    return "Error";
+    return document.querySelector(".display").textContent = "Nope";
   } else {
      return a / b;
   }
@@ -29,17 +29,20 @@ const divide = function (a,b) {
 
 
 function operate (num1, op, num2){
-  if(op === "+") {
-    return add(num1, num2); 
+  num1 = parseInt(firstNumber); 
+  num2 = parseInt(secondNumber); 
+  op = operator; 
+  if(operator === "+") {
+    return document.querySelector(".display").textContent = add (num1, num2);
   }
-  if(op === "-") {
-    return subtract(num1, num2);
+  if(operator === "-") {
+    return document.querySelector(".display").textContent = subtract(num1, num2);
   }
-  if(op === "*") {
-    return multiply(num1, num2);
+  if(operator === "*") {
+    return document.querySelector(".display").textContent = multiply(num1, num2);
   }
-  if(op === "/") {
-    return divide(num1, num2);
+  if(operator === "/") {
+    return document.querySelector(".display").textContent = divide(num1, num2);
   } else {
     return "Error"; 
   }
@@ -49,25 +52,39 @@ let operands = document.querySelectorAll(".operand");
 
 operands.forEach(operand => operand.addEventListener("click", displayValue));
 
-let inputString = ""; 
+let firstNumber = ""; 
+let operator = ""; 
+let secondNumber = ""; 
 
 function displayValue(e) {
   if (e.target && e.target.value) {
-      inputString += e.target.value;
-      document.querySelector(".display").textContent = inputString;
-      return inputString
+    let value = e.target.value; 
+    if(operator === "") {
+      firstNumber = (firstNumber === "")? value : firstNumber + value; 
+      document.querySelector(".display").textContent = firstNumber; 
+
+    } else {
+      secondNumber = (secondNumber === "")? value : secondNumber + value; 
+      document.querySelector(".display").textContent = secondNumber; 
+    }
+      
   } 
 }
 
-
-
 let operators = document.querySelectorAll (".operator"); 
 
-operators.forEach(operator => operator.addEventListener("click", saveOperator)); 
+operators.forEach(operator => operator.addEventListener("click", selectedOperator)); 
 
-function saveOperator (e) {
+function selectedOperator (e) {
   if (e.target && e.target.value) {
-    let selectedOperator = e.target.value;
-    console.log(selectedOperator); 
+    operator = e.target.value;
+    return operator; 
   }   
 };
+
+
+let equals = document.querySelector(".equals"); 
+
+equals.addEventListener("click", operate); 
+
+// still to do: round numbers with long decimals, remove the second displayed Value after the result is shown, make sure it calculates pairs of numbers (one operation at a time), pressing clear. 

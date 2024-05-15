@@ -31,17 +31,18 @@ const divide = function (a,b) {
 function operate (num1, op, num2){
   num1 = parseInt(firstNumber); 
   num2 = parseInt(secondNumber); 
-  op = operator; 
-  if(operator === "+") {
+  op = operator;
+
+  if(op === "+") {
     return document.querySelector(".display").textContent = add (num1, num2);
   }
-  if(operator === "-") {
+  if(op === "-") {
     return document.querySelector(".display").textContent = subtract(num1, num2);
   }
-  if(operator === "*") {
+  if(op === "*") {
     return document.querySelector(".display").textContent = multiply(num1, num2);
   }
-  if(operator === "/") {
+  if(op === "/") {
     return document.querySelector(".display").textContent = divide(num1, num2);
   } else {
     return "Error"; 
@@ -55,18 +56,21 @@ operands.forEach(operand => operand.addEventListener("click", displayValue));
 let firstNumber = ""; 
 let operator = ""; 
 let secondNumber = ""; 
+ 
 
 function displayValue(e) {
   if (e.target && e.target.value) {
-    let value = e.target.value; 
+    let value = e.target.value;
+
     if(operator === "") {
       firstNumber = (firstNumber === "")? value : firstNumber + value; 
       document.querySelector(".display").textContent = firstNumber; 
 
-    } else {
+    } else if(operator !== "") {
       secondNumber = (secondNumber === "")? value : secondNumber + value; 
       document.querySelector(".display").textContent = secondNumber; 
-    }
+    } 
+      
       
   } 
 }
@@ -83,8 +87,21 @@ function selectedOperator (e) {
 };
 
 
-let equals = document.querySelector(".equals"); 
+const equals = document.querySelector(".equals"); 
 
 equals.addEventListener("click", operate); 
 
-// still to do: round numbers with long decimals, remove the second displayed Value after the result is shown, make sure it calculates pairs of numbers (one operation at a time), pressing clear. 
+// still to do:  long decimals, remove the second displayed Value after the result is shown, make sure it calculates pairs of numbers (one operation at a time), pressing clear. 
+
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", clearDisplay); 
+
+function clearDisplay (e) {
+  document.querySelector(".display").textContent = "0";
+  firstNumber = ""; 
+  operator = ""; 
+  secondNumber = "";
+  
+  
+}
+ 

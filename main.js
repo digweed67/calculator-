@@ -19,7 +19,11 @@ const divide = function (a,b) {
   if(b === 0) {
     return document.querySelector(".display").textContent = "Nope";
   } else {
-     return a / b;
+     let result = a / b;
+     if (result.toString().includes(".") && result.toString().split(".")[1].length > 3) {
+      result = parseFloat(result.toFixed(3)); 
+     }
+     return result; 
   }
 
 }
@@ -29,8 +33,8 @@ const divide = function (a,b) {
 
 
 function operate (num1, op, num2){
-  num1 = parseInt(firstNumber); 
-  num2 = parseInt(secondNumber); 
+  num1 = parseFloat(firstNumber); 
+  num2 = parseFloat(secondNumber); 
   op = operator;
 
   if(op === "+") {
@@ -56,6 +60,7 @@ operands.forEach(operand => operand.addEventListener("click", displayValue));
 let firstNumber = ""; 
 let operator = ""; 
 let secondNumber = ""; 
+let result = ""; 
  
 
 function displayValue(e) {
@@ -69,6 +74,7 @@ function displayValue(e) {
     } else if(operator !== "") {
       secondNumber = (secondNumber === "")? value : secondNumber + value; 
       document.querySelector(".display").textContent = secondNumber; 
+
     } 
       
       
@@ -91,7 +97,7 @@ const equals = document.querySelector(".equals");
 
 equals.addEventListener("click", operate); 
 
-// still to do:  long decimals, remove the second displayed Value after the result is shown, make sure it calculates pairs of numbers (one operation at a time), pressing clear. 
+// still to do:   remove the second displayed Value after the result is shown, make sure it calculates pairs of numbers (one operation at a time) 
 
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", clearDisplay); 

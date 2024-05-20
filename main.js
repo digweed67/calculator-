@@ -23,6 +23,7 @@ const multiply = function (a,b) {
     result = parseFloat(result.toFixed(4)); 
    }
    return result;
+
 }; 
 
 
@@ -72,8 +73,8 @@ operands.forEach(operand => operand.addEventListener("click", displayValue));
 let firstNumber = ""; 
 let operator = ""; 
 let secondNumber = ""; 
-let result = ""; 
  
+
 
 function displayValue(e) {
   if (e.target && e.target.value) {
@@ -90,6 +91,7 @@ function displayValue(e) {
     } 
          
   } 
+
 }
 
 let operators = document.querySelectorAll (".operator"); 

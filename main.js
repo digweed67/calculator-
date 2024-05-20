@@ -81,13 +81,23 @@ function displayValue(e) {
     let value = e.target.value;
 
     if(operator === "") {
-      firstNumber = (firstNumber === "")? value : firstNumber + value; 
-      document.querySelector(".display").textContent = firstNumber; 
-
+      if (firstNumber.length >= 9) {
+      firstNumber = firstNumber.slice(0, 8);
+      document.querySelector(".display").textContent = firstNumber;
+      
+      } else {
+        firstNumber = (firstNumber === "")? value : firstNumber + value; 
+        document.querySelector(".display").textContent = firstNumber;
+      }
     } else if(operator !== "") {
-      secondNumber = (secondNumber === "")? value : secondNumber + value; 
-      document.querySelector(".display").textContent = secondNumber; 
-
+        if (secondNumber.length >= 9) {
+          secondNumber = secondNumber.slice(0, 8)
+          document.querySelector(".display").textContent = secondNumber; 
+      } else {
+        secondNumber = (secondNumber === "")? value : secondNumber + value; 
+        document.querySelector(".display").textContent = secondNumber;
+      }
+    
     } 
          
   } 

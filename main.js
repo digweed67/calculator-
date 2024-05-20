@@ -1,16 +1,28 @@
 const add = function (a, b) {
-  return a + b;
+  let result = a + b;
+  if (result.toString().includes(".") && result.toString().split(".")[1].length > 4) {
+    result = parseFloat(result.toFixed(4)); 
+   }
+   return result; 
 };
 
 
 const subtract = function (a, b) {
-  return a - b;
+  let result = a - b;
+  if (result.toString().includes(".") && result.toString().split(".")[1].length > 4) {
+    result = parseFloat(result.toFixed(4)); 
+   }
+   return result;
 };
 
 
 
 const multiply = function (a,b) {
-  return a * b; 
+  let result = a * b; 
+  if (result.toString().includes(".") && result.toString().split(".")[1].length > 4) {
+    result = parseFloat(result.toFixed(4)); 
+   }
+   return result;
 }; 
 
 
@@ -20,8 +32,8 @@ const divide = function (a,b) {
     return document.querySelector(".display").textContent = "Nope";
   } else {
      let result = a / b;
-     if (result.toString().includes(".") && result.toString().split(".")[1].length > 3) {
-      result = parseFloat(result.toFixed(3)); 
+     if (result.toString().includes(".") && result.toString().split(".")[1].length > 4) {
+      result = parseFloat(result.toFixed(4)); 
      }
      return result; 
   }
@@ -76,8 +88,7 @@ function displayValue(e) {
       document.querySelector(".display").textContent = secondNumber; 
 
     } 
-      
-      
+         
   } 
 }
 
@@ -111,3 +122,6 @@ function clearDisplay (e) {
   
 }
  
+const decimal = document.querySelector(".decimal"); 
+decimal.addEventListener("click", displayValue);
+

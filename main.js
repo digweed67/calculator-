@@ -82,7 +82,7 @@ function displayValue(e) {
 
     if(operator === "") {
       if (firstNumber.length >= 9) {
-      firstNumber = firstNumber.slice(0, 8);
+      firstNumber = firstNumber.slice(0, 9);
       document.querySelector(".display").textContent = firstNumber;
       
       } else {
@@ -91,12 +91,12 @@ function displayValue(e) {
       }
     } else if(operator !== "") {
         if (secondNumber.length >= 9) {
-          secondNumber = secondNumber.slice(0, 8)
+          secondNumber = secondNumber.slice(0, 9);
           document.querySelector(".display").textContent = secondNumber; 
-      } else {
+        } else {
         secondNumber = (secondNumber === "")? value : secondNumber + value; 
         document.querySelector(".display").textContent = secondNumber;
-      }
+        }
     
     } 
          
